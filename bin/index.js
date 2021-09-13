@@ -4,6 +4,13 @@ const database = require('../base-prices.json');
 const cart1 = require('../cart-9363.json'); // array of objects
 let cartTotal = 0
 
+cart1.forEach((item) => { 
+  let itemBaseCost = searching(database, item)
+  let itemTotal = addMarkup(itemBaseCost, item['artist-markup'])
+  cartTotal = cartTotal +(itemTotal * item['quantity'])
+})
+console.log('cart total', cartTotal, '\n')
+
 function searching(database, cartItem){
   let dbItemsMatchingCartItems = []
 
