@@ -38,3 +38,7 @@ function searching(database, cartItem){
       }
     }
   }
+
+  function addMarkup(baseCost, artistMarkup){
+    return (baseCost + Math.round(baseCost * artistMarkup/100))
+  }
