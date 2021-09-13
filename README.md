@@ -23,7 +23,7 @@ Create a price calculator command-line program in any language
 1. Install node.js -v 6.14.11
 2. Install git
 3. In the terminal git clone the app to your home directory
-4. Run the setup executable file
+4. Run the setup executable file AND filepath to base-prices.json file that you will be using
 ~/redbubble/bin/setup
 5. Run the comparenow executable to start the app
 ~/redububble/bin/index
@@ -75,6 +75,7 @@ Node:
 [fs.read](https://betterprogramming.pub/a-memory-friendly-way-of-reading-files-in-node-js-a45ad0cc7bb6)
 [streams](https://nodejs.dev/learn/nodejs-streams)
 [fs.readFile](https://medium.com/@osiolabs/read-write-json-files-with-node-js-92d03cc82824)
+[object keys](https://www.geeksforgeeks.org/object-keys-javascript/)
 
 Big O Notation:
 [Time Complexity diagrams](http://www.eenboekskast.nl/big-o-cheatsheet/)
