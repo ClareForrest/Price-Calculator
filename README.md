@@ -76,6 +76,7 @@ Node:
 [streams](https://nodejs.dev/learn/nodejs-streams)
 [fs.readFile](https://medium.com/@osiolabs/read-write-json-files-with-node-js-92d03cc82824)
 [object keys](https://www.geeksforgeeks.org/object-keys-javascript/)
+[javascript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
 
 Big O Notation:
 [Time Complexity diagrams](http://www.eenboekskast.nl/big-o-cheatsheet/)
