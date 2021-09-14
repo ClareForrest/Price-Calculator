@@ -1,23 +1,24 @@
 #!/usr/bin/env node
 
-const database = require('../base-prices.json');
-const cart = require('../cart-9363.json');
+var database = require('../test/base-prices.json');
+const cart = require('../test/cart-11356.json');
 let cartTotal = 0
 
-checkout(cart)
+checkout(cart, database)
 
-function checkout(cart){
-  cart.forEach((item) => { 
-  let itemBaseCost = searching(database, item)
-  let itemTotal = addMarkup(itemBaseCost, item['artist-markup'])
-  let itemQuantity = item['quantity']
-  cartTotal = cartTotal +(itemTotal * itemQuantity)
+function checkout(cart, database){
+  for(let k = 0; k < cart.length; k++){
+    let item = cart[k]
+    let itemBaseCost = searching(database,  item)
+    let itemTotal = addMarkup(itemBaseCost, item['artist-markup'])
+    let itemQuantity = item['quantity']
+    cartTotal = cartTotal +(itemTotal * itemQuantity)
+  }
   return cartTotal
-  })
 }
 console.log('cart total', cartTotal, '\n')
 
-function searching(database, cartItem){
+  function searching(database, cartItem){
   let dbItemsMatchingCartItems = []
 
   database.map((product) => {
