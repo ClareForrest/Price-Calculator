@@ -10,8 +10,8 @@ Create a price calculator command-line program in any language
 
 1. Accept 2 command-line arguments
 2. Output the total price of the cart 
-  a. in cents 
-  b. followed by a newline character
+    a. in cents 
+    b. followed by a newline character
 3. Handle products with any options, even ones not found in the sample files
 4. Time complexity to be O(n)
 5. Include thorough, automated tests
@@ -23,42 +23,42 @@ Create a price calculator command-line program in any language
 1. Install node.js -v 6.14.11
 2. Install git
 3. In the terminal git clone the app to your home directory
-4. Run the setup executable file AND filepath to base-prices.json file that you will be using
-~/redbubble/bin/setup
-5. Run the comparenow executable to start the app
+4. npm install to install required dependencies
+5. Run the start executable to start the app (npm start)
 ~/redububble/bin/index
 
 **Testing:**
 Unit, Integration and End-to-end Tests have been written.
 The libraries used are mocha and chai with the 'expect' syntax
 A script has been created to enable automated testing of all tests. 
-1. Run the test executable to run all tests
-~redbubble/bin/test
+1. Run the test executable to run all tests (npm test)
+~redbubble/test/test
 
 **Functionality:**
 
 Redbubble has asked that the CLI program complete the following;
 
 1. Accept 2 command-line arguments
-readline package required for user interaction and CLI arguments
-ARGV array accessed to save user responses to appropriate constant variables
+Two options considered; 
+- readline package required for user interaction and CLI arguments
+- ARGV array accessed to save user responses to appropriate constant variables
 
 2. Output the total price of the cart 
-  a. in cents 
-  b. followed by a newline character
-console.log used to return constant variable from calculating function
+    a. in cents 
+    b. followed by a newline character
+    console.log used to return constant variable from calculating function
 
 3. Handle products with any options, even ones not found in the sample files
 
 4. Time complexity to be O(n)
-.map and .filter methods both have a time complexity Big O Notation of O(n)
+.map and for loop methods both have a time complexity Big O Notation of O(n)
 
 5. Include thorough, automated tests
 mocha and chai testing packages have been required and utilised in the creation of unit, integration and end-to-end tests
 a script has been created to run all tests automatically 
 
 6. Include any necessary instructions on how to install your program, run it, and run the tests
-yargs library has been required in order to create a help menu
+yargs library has been required for future option to create a help menu for the user
 
 7. Your code should clearly reflect and explain the problem domain
 code comments have been included where appropriate
