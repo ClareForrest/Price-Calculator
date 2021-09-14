@@ -1,14 +1,20 @@
 #!/usr/bin/env node
 
 const database = require('../base-prices.json');
-const cart1 = require('../cart-9363.json'); // array of objects
+const cart = require('../cart-9363.json');
 let cartTotal = 0
 
-cart1.forEach((item) => { 
+checkout(cart)
+
+function checkout(cart){
+  cart.forEach((item) => { 
   let itemBaseCost = searching(database, item)
   let itemTotal = addMarkup(itemBaseCost, item['artist-markup'])
-  cartTotal = cartTotal +(itemTotal * item['quantity'])
-})
+  let itemQuantity = item['quantity']
+  cartTotal = cartTotal +(itemTotal * itemQuantity)
+  return cartTotal
+  })
+}
 console.log('cart total', cartTotal, '\n')
 
 function searching(database, cartItem){
@@ -48,4 +54,10 @@ function searching(database, cartItem){
 
   function addMarkup(baseCost, artistMarkup){
     return (baseCost + Math.round(baseCost * artistMarkup/100))
+  }
+
+  module.exports = {
+    addMarkup,
+    checkout,
+    searching
   }
