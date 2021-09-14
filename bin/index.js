@@ -1,11 +1,23 @@
 #!/usr/bin/env node
 
-var database = require('../test/base-prices.json');
-const cart = require('../test/cart-11356.json');
+
+// I have not been able to achieve the reading of files 
+// that are passed in by argv in the CLI at startup
+// To demonstrate the functions that I have written
+// I have hard-coded the files below;
+
+const database = require('../test/base-prices.json');
+const cart = require('../test/cart-4560.json');
+// const cart = require('../test/cart-9363.json');
+// const cart = require('../test/cart-11356.json');
+
 let cartTotal = 0
 
 checkout(cart, database)
 
+// TO DO: createReadStrem for both cart and database (currently hardcoded)
+
+// Takes in two files and returns cart total from db pricing
 function checkout(cart, database){
   for(let k = 0; k < cart.length; k++){
     let item = cart[k]
@@ -17,6 +29,11 @@ function checkout(cart, database){
   return cartTotal
 }
 console.log('cart total', cartTotal, '\n')
+
+  // Checks nested cart key/value pairs against db key/value pairs
+  // Checks for cartItem product type to match against database
+  // Then checks database options against cartItem options. 
+  // This allows me to meet the criteria for varying options on different products
 
   function searching(database, cartItem){
   let dbItemsMatchingCartItems = []
@@ -53,10 +70,13 @@ console.log('cart total', cartTotal, '\n')
     }
   }
 
+  // Calculates the markup from cartItem and calculates against the base price
   function addMarkup(baseCost, artistMarkup){
     return (baseCost + Math.round(baseCost * artistMarkup/100))
   }
 
+  // TO DO: Export to separate file and create menu options
+  // Allows for modules to be exported for testing. 
   module.exports = {
     addMarkup,
     checkout,
