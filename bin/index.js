@@ -1,21 +1,52 @@
 #!/usr/bin/env node
+const fs = require('fs');
+const path = require('path');
+const { readFile } = require('fs');
 
+// Get the filepath for the passed in file
+const dbFileArg = process.argv[2]
+const cartFileArg = process.argv[3]
+const cartFile = path.join(__dirname, cartFileArg)
+let cartTotal = 0
 
-// I have not been able to achieve the reading of files 
-// that are passed in by argv in the CLI at startup
-// To demonstrate the functions that I have written
-// I have hard-coded the files below;
+// const cart = readFile(cartFile, 'utf-8', (err, jsonString) => {
+//   if(err){ 
+//     console.log('File read failed:', err)
+//   } else {
+//     const data = JSON.parse(jsonString)
+//     return data 
+//   }
+// })
 
-const database = require('../test/base-prices.json');
+// const database = require('../test/base-prices.json');
 const cart = require('../test/cart-4560.json');
 // const cart = require('../test/cart-9363.json');
 // const cart = require('../test/cart-11356.json');
 
-let cartTotal = 0
+// TO DO: enable buffered data to be read and passed to the checkout function. 
 
-checkout(cart, database)
+try {
+  // default highWaterMark of 64 kb
+  const readableStream = fs.createReadStream(__dirname + dbFileArg, {encoding: 'utf8'}) // OR fs.createReadStream('file_path')
+  logChunks(readableStream);
+  
+  // My concern here is, 'What happens if the chunk ends part-way through a db object?'
+  async function logChunks(readableStream) {
+    for await (const database of readableStream) {
+      checkout(cart, database)
+      console.log('cart total', cartTotal, '\n')
+    }
+  }
+} catch (error) {
+  console.log('error', error)
+}
 
-// TO DO: createReadStrem for both cart and database (currently hardcoded)
+
+// I have not been able to achieve the reading of files 
+// once processed as a readable stream.
+// To demonstrate the functions that I have written
+// I have hard-coded the files above;
+
 
 // Takes in two files and returns cart total from db pricing
 function checkout(cart, database){
@@ -28,7 +59,6 @@ function checkout(cart, database){
   }
   return cartTotal
 }
-console.log('cart total', cartTotal, '\n')
 
   // Checks nested cart key/value pairs against db key/value pairs
   // Checks for cartItem product type to match against database
