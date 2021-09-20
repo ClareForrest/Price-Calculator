@@ -32,7 +32,23 @@ try {
   
   // My concern here is, 'What happens if the chunk ends part-way through a db object?'
   async function logChunks(readableStream) {
-    for await (const database of readableStream) {
+    for await (const chunk of readableStream) {
+      // Returns an object of sorts, but with /n after every new line
+      let database = [chunk] 
+      // I am working on the returned buffer chunks to remove 
+      //the \n from the object to enable mapping.
+
+      // eg.
+      // '  {\n' +
+      // '    "product-type": "hoodie",\n' +
+      // '    "options": {\n' +
+      // '      "colour": ["white", "dark"],\n' +
+      // '      "size": ["small", "medium"]\n' +
+      // '    },\n' +
+      // '    "base-price": 3800\n' +
+      // '  },\n' +
+  
+      console.log('database', database)
       checkout(cart, database)
       console.log('cart total', cartTotal, '\n')
     }
@@ -41,12 +57,8 @@ try {
   console.log('error', error)
 }
 
-
-// I have not been able to achieve the reading of files 
-// once processed as a readable stream.
 // To demonstrate the functions that I have written
 // I have hard-coded the files above;
-
 
 // Takes in two files and returns cart total from db pricing
 function checkout(cart, database){
