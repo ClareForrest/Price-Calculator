@@ -21,34 +21,21 @@ let cartTotal = 0
 // const database = require('../test/base-prices.json');
 const cart = require('../test/cart-4560.json');
 // const cart = require('../test/cart-9363.json');
+console.log('cart', cart)
 // const cart = require('../test/cart-11356.json');
 
 // TO DO: enable buffered data to be read and passed to the checkout function. 
 
 try {
   // default highWaterMark of 64 kb
-  const readableStream = fs.createReadStream(__dirname + dbFileArg, {encoding: 'utf8'}) // OR fs.createReadStream('file_path')
+  const readableStream = fs.createReadStream(__dirname + dbFileArg, {encoding: 'utf-8'}) // OR fs.createReadStream('file_path')
   logChunks(readableStream);
   
   // My concern here is, 'What happens if the chunk ends part-way through a db object?'
   async function logChunks(readableStream) {
     for await (const chunk of readableStream) {
-      // Returns an object of sorts, but with /n after every new line
-      let database = [chunk] 
-      // I am working on the returned buffer chunks to remove 
-      //the \n from the object to enable mapping.
-
-      // eg.
-      // '  {\n' +
-      // '    "product-type": "hoodie",\n' +
-      // '    "options": {\n' +
-      // '      "colour": ["white", "dark"],\n' +
-      // '      "size": ["small", "medium"]\n' +
-      // '    },\n' +
-      // '    "base-price": 3800\n' +
-      // '  },\n' +
-  
-      console.log('database', database)
+      let db =  chunk.toString('utf-8')
+      const database = JSON.parse(db)
       checkout(cart, database)
       console.log('cart total', cartTotal, '\n')
     }
