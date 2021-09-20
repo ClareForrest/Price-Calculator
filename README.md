@@ -82,6 +82,9 @@ fs & createReadStream
 [fs.createReadstream](https://nodejs.org/docs/latest/api/fs.html#fs_fs_createreadstream_path_options)
 [async/await readable stream](https://2ality.com/2019/11/nodejs-streams-async-iteration.html)
 
+Buffer
+[Buffer Encoding](https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings)
+
 Big O Notation:
 [Time Complexity diagrams](http://www.eenboekskast.nl/big-o-cheatsheet/)
 
