@@ -4,18 +4,17 @@
   "description": "A command line price calculator program",
   "main": "bin/index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "start"
+    "test": "mocha"
   },
   "author": "redbubble applicant",
   "license": "ISC",
   "bin": {
-    "start": "./bin/index.js"
+    "checkout": "./index.js"
   },
   "dependencies": {
     "chai": "^4.3.4",
     "chai-spies": "^1.0.0",
-    "mocha": "^9.1.1",
-    "sinon": "^11.1.2"
-  }
+    "mocha": "^9.1.1"
+  },
+  "devDependencies": {}
 }
