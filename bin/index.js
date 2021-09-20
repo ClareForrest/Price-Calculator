@@ -9,43 +9,34 @@ const cartFileArg = process.argv[3]
 const cartFile = path.join(__dirname, cartFileArg)
 let cartTotal = 0
 
-// const cart = readFile(cartFile, 'utf-8', (err, jsonString) => {
-//   if(err){ 
-//     console.log('File read failed:', err)
-//   } else {
-//     const data = JSON.parse(jsonString)
-//     return data 
-//   }
-// })
-
-// const database = require('../test/base-prices.json');
-const cart = require('../test/cart-4560.json');
-// const cart = require('../test/cart-9363.json');
-console.log('cart', cart)
-// const cart = require('../test/cart-11356.json');
-
-// TO DO: enable buffered data to be read and passed to the checkout function. 
-
 try {
-  // default highWaterMark of 64 kb
-  const readableStream = fs.createReadStream(__dirname + dbFileArg, {encoding: 'utf-8'}) // OR fs.createReadStream('file_path')
-  logChunks(readableStream);
-  
-  // My concern here is, 'What happens if the chunk ends part-way through a db object?'
-  async function logChunks(readableStream) {
-    for await (const chunk of readableStream) {
-      let db =  chunk.toString('utf-8')
-      const database = JSON.parse(db)
-      checkout(cart, database)
-      console.log('cart total', cartTotal, '\n')
+  // Read the file
+  readFile(cartFile, 'utf-8', (err, jsonString) => {
+    if(err){ 
+      console.log('File read failed:', err)
+    } else {
+      let cart = JSON.parse(jsonString)
+
+      // default highWaterMark of 64 kb
+      const readableStream = fs.createReadStream(__dirname + dbFileArg, {encoding: 'utf-8'})
+      logChunks(readableStream);
+      
+      // CONCERN/FUTURE RESEARCH: 'What happens if the chunk ends part-way through a db object?'
+      
+      // Convert readableStream to JSON object, pass to checkout function
+      async function logChunks(readableStream) {
+        for await (const chunk of readableStream) {
+          let db =  chunk.toString('utf-8')
+          const database = JSON.parse(db)
+          checkout(cart, database)
+          console.log('cart total', cartTotal, '\n')
+        }
+      }
     }
-  }
+  })
 } catch (error) {
   console.log('error', error)
 }
-
-// To demonstrate the functions that I have written
-// I have hard-coded the files above;
 
 // Takes in two files and returns cart total from db pricing
 function checkout(cart, database){
@@ -105,6 +96,7 @@ function checkout(cart, database){
   }
 
   // TO DO: Export to separate file and create menu options
+
   // Allows for modules to be exported for testing. 
   module.exports = {
     addMarkup,
