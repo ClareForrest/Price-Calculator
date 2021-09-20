@@ -1,10 +1,11 @@
+#!/usr/bin/env node
+
 const chai = require('chai')
 const spies = require('chai-spies');
 chai.use(spies);
 const expect = chai.expect;
 const mocha = require('mocha');
-const sinon = require('sinon');
-let sandbox = sinon.createSandbox();
+
 const { 
   addMarkup,
   checkout,
