@@ -60,7 +60,7 @@ function searching(database, cartItem){
     return (baseCost + Math.round(baseCost * artistMarkup/100))
   }
 
-  // Allows for modules to be exported for testing. 
+  // Allows for modules to be exported to index.js file to run program & for testing. 
   module.exports = {
     calculating,
     searching,
