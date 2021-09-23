@@ -7,6 +7,7 @@ let database
 
 processArgv()
 readingFiles(cartFile)
+
 // Process the arguments passed to CLI and get filepath for the passed in file
 function processArgv(){
   if(process.argv[2]){
@@ -45,7 +46,7 @@ function readingFiles (cartFile){
             // Because readableStream is not a variable, the data being read can't be referred to outside of this function
             // Calculating function is called within the readFile and createReadStrem methods in order to pass the data to the calcuclating function
             let cartTotal = calculating(cart, database)
-            console.log(`cart total $0.${cartTotal} \n`)
+            console.log(`cart total ${cartTotal} \n`)
           }
         }
       } catch (error) {
