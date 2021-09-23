@@ -8,7 +8,7 @@ const {
   addMarkup,
   calculating,
   searching,
-} = require('../server');
+} = require('../controller');
 
 // Unit Tests
 describe('addMarkup function Test', function() {
