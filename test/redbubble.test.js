@@ -8,10 +8,9 @@ const {
   addMarkup,
   calculating,
   searching,
-  processArgv
-} = require('../index');
+} = require('../server');
 
-// Unit Test
+// Unit Tests
 describe('addMarkup function Test', function() {
 
   it('should return 4560', function() {
@@ -56,7 +55,7 @@ describe('searching function Test', function() {
   })
 })
 
-// Integration Test
+// Integration Tests
 describe('calculating function Test', function() {
 
   it('should return cartTotal of 4560', function() {
