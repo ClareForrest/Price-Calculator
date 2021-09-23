@@ -20,10 +20,8 @@ Create a price calculator command-line program in any language
 **Installation & Setup:**
 1. Program runs on macOS/Linux only - not suitable for Windows due to filepath creation
 2. Install node.js -v 6.14.11
-3. Install git
-4. In the terminal git clone the app to your home directory
-5. Run npm install to install dependencies
-6. Save any files to be referenced in the source directory where index.js is located 
+3. Run npm install to install dependencies
+4. Save any files to be referenced in the source directory where index.js is located 
 
 **Running the Program:**
 1. Reference files (to pass to program) must be saved in the root directory where index.js is located 
