@@ -62,10 +62,6 @@ function searching(database, cartItem){
 
   // Allows for modules to be exported for testing. 
   module.exports = {
-    // processArgv,
-    // processDatabaseFileArgv,
-    // processCartFileArgv,
-    // readingFiles,
     calculating,
     searching,
     addMarkup,
