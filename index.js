@@ -3,8 +3,8 @@ const path = require('path');
 const { readFile, createReadStream } = require('fs');
 let cartFile
 // Process the arguments passed to CLI
-// processArgv()
-// readingFiles(cartFile)
+processArgv()
+readingFiles(cartFile)
 // Read the cart file
 // Callback method used as readFile does not return a promise
 function readingFiles (cartFile){
@@ -14,18 +14,18 @@ function readingFiles (cartFile){
       console.log('File read failed:', err)
     } else {
       let cart = JSON.parse(jsonString)
-      
+
       try {
         // Convert the database file to a readable stream
         const readableStream = createReadStream(__dirname + dbFileArg, {encoding: 'utf-8'})
         logChunks(readableStream);
-        
+
         // Convert readableStream to JSON object, pass to calculating function
         async function logChunks(readableStream) {
           for await (const chunk of readableStream) {
             let db =  chunk.toString('utf-8')
             const database = JSON.parse(db)
-            
+
             // Because readableStream is not a variable, the data being read can't be referred to outside of this function
             // Calculating function is called within the readFile and createReadStrem methods in order to pass the data to the calcuclating function
             let cartTotal = calculating(cart, database)
