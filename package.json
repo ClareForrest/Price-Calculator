@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "node ./test/tests.js"
+    "test": "mocha ./test/redbubble.test.js"
   },
   "author": "redbubble applicant",
   "license": "ISC",
