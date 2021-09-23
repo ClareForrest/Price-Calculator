@@ -2,45 +2,46 @@
 const path = require('path');
 const { readFile, createReadStream } = require('fs');
 let cartFile
-let cartTotal = 0
-
-
 // Process the arguments passed to CLI
-processArgv()
-
+// processArgv()
+// readingFiles(cartFile)
 // Read the cart file
 // Callback method used as readFile does not return a promise
-readFile(cartFile, 'utf-8', (err, jsonString) => {
-  if(err){ 
-    console.log('File read failed:', err)
-  } else {
-    let cart = JSON.parse(jsonString)
-    
-    try {
-      // Convert the database file to a readable stream
-      const readableStream = createReadStream(__dirname + dbFileArg, {encoding: 'utf-8'})
-      logChunks(readableStream);
-    
-      // Convert readableStream to JSON object, pass to calculating function
-      async function logChunks(readableStream) {
-        for await (const chunk of readableStream) {
-          let db =  chunk.toString('utf-8')
-          const database = JSON.parse(db)
+function readingFiles (cartFile){
 
-          // Because readableStream is not a variable, the data being read can't be referred to outside of this function
-          // Calculating function is called within the readFile and createReadStrem methods in order to pass the data to the calcuclating function
-          calculating(cart, database)
-          console.log(`cart total $0.${cartTotal} \n`)
+  readFile(cartFile, 'utf-8', (err, jsonString) => {
+    if(err){ 
+      console.log('File read failed:', err)
+    } else {
+      let cart = JSON.parse(jsonString)
+      
+      try {
+        // Convert the database file to a readable stream
+        const readableStream = createReadStream(__dirname + dbFileArg, {encoding: 'utf-8'})
+        logChunks(readableStream);
+        
+        // Convert readableStream to JSON object, pass to calculating function
+        async function logChunks(readableStream) {
+          for await (const chunk of readableStream) {
+            let db =  chunk.toString('utf-8')
+            const database = JSON.parse(db)
+            
+            // Because readableStream is not a variable, the data being read can't be referred to outside of this function
+            // Calculating function is called within the readFile and createReadStrem methods in order to pass the data to the calcuclating function
+            let cartTotal = calculating(cart, database)
+            console.log(`cart total $0.${cartTotal} \n`)
+          }
         }
+      } catch (error) {
+        console.log('error', error)
       }
-    } catch (error) {
-      console.log('error', error)
     }
-  }
-})
+  })
+}
 
 // Takes in two files and returns cart total from db pricing
 function calculating(cart, database){
+  let cartTotal = 0
   for(let k = 0; k < cart.length; k++){
     let item = cart[k]
     let itemBaseCost = searching(database,  item)
