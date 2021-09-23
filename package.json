@@ -1,6 +1,6 @@
 {
   "name": "coding-challenge",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A command line price calculator program",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,5 @@
   "dependencies": {
     "chai": "^4.3.4",
     "mocha": "^9.1.1"
-  },
-  "devDependencies": {}
+  }
 }
