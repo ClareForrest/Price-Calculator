@@ -1,7 +1,7 @@
 
 const path = require('path');
 const { readFile, createReadStream } = require('fs');
-const { calculating } = require('./controller.js');
+const { calculating } = require('./controllers/controller.js');
 let cartFile
 let database
 
