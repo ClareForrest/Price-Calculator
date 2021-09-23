@@ -27,8 +27,8 @@ Create a price calculator command-line program in any language
 1. Reference files (to pass to program) must be saved in the root directory where index.js is located 
 2. cd to root directory
 2. Run either `npm start` or `node index.js` followed by TWO files(filename only). First is the file that you will use as the database. Second is the cart you wish to use at checkout
-   File example `/base-prices.json`
-   Full CLI example `node index.js /base-prices.json /cart-4560.json`
+   File example `/base-prices.json` OR `base-prices.json`
+   Full CLI example `node index.js /base-prices.json /cart-4560.json` OR `node index.js base-prices.json cart-4560.json`
 
 **Testing:**
 Unit and Integration Tests have been written.
