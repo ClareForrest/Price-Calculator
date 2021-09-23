@@ -26,18 +26,18 @@ Create a price calculator command-line program in any language
 6. Save any files to be referenced in the source directory where index.js is located 
 
 **Running the Program:**
-1. Files must be saved in the source directory where index.js is located 
+1. Reference files (to pass to program) must be saved in the root directory where index.js is located 
+2. cd to root directory
 2. Run either `npm start` or `node index.js` followed by TWO files(filename only). First is the file that you will use as the database. Second is the cart you wish to use at checkout
    File example `/base-prices.json`
    Full CLI example `node index.js /base-prices.json /cart-4560.json`
 
 **Testing:**
-Unit, Integration and End-to-end Tests have been written.
+Unit and Integration Tests have been written.
 The libraries used are mocha and chai with the 'expect' syntax
 A script has been created to enable automated testing of all tests. 
-1. cd to the test file 
-2. Run the test script to run all tests
-  For example: `node test.js`
+1. Run the test script to run all tests
+  For example: `npm test`
 
 **Functionality:**
 Redbubble has asked that the CLI program complete the following;
