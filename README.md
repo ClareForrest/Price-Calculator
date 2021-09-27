@@ -17,6 +17,9 @@ Create a price calculator command-line program in any language
 7. Your code should clearly reflect and explain the problem domain
 8. Write code which you can easily extend
 
+**Domain Model:**
+[Domain Model for an Online Marketplace - Buyer only]('./docs/online-marketplace-domain-model.png')
+
 **Installation & Setup:**
 1. Program runs on macOS/Linux only - not suitable for Windows due to filepath creation
 2. Install node.js -v 14.16.0
@@ -26,7 +29,8 @@ Create a price calculator command-line program in any language
 **Running the Program:**
 1. Reference files (to pass to program) must be saved in the root directory where index.js is located 
 2. cd to root directory
-2. Run either `npm start` or `node index.js` followed by TWO files(filename only). First is the file that you will use as the database. Second is the cart you wish to use at checkout
+3. Run either `npm start` or `node index.js` followed by TWO files(filename only). 
+  First is the file that you will use as the database. Second is the cart you wish to use at checkout
    File example `/base-prices.json` OR `base-prices.json`
    Full CLI example `node index.js /base-prices.json /cart-4560.json` OR `node index.js base-prices.json cart-4560.json`
 
