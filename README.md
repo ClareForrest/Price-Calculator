@@ -22,15 +22,16 @@ Create a price calculator command-line program in any language
 
 **Installation & Setup:**
 1. Program runs on macOS/Linux only - not suitable for Windows due to filepath creation
-2. Install node.js -v 14.16.0
-3. Run npm install to install dependencies
-4. Save any files to be referenced in the source directory where index.js is located 
+2. git clone this repo
+3. Install node.js -v 14.16.0
+4. Run npm install to install dependencies
+5. Save any files to be referenced in the source directory where index.js is located 
 
 **Running the Program:**
 1. Reference files (to pass to program) must be saved in the root directory where index.js is located 
 2. cd to root directory
 3. Run either `npm start` or `node index.js` followed by TWO files(filename only). 
-  First is the file that you will use as the database. Second is the cart you wish to use at checkout
+   First is the file that you will use as the database. Second is the cart you wish to use at checkout
    File example `/base-prices.json` OR `base-prices.json`
    Full CLI example `node index.js /base-prices.json /cart-4560.json` OR `node index.js base-prices.json cart-4560.json`
 
@@ -76,7 +77,7 @@ Node:
 [object keys](https://www.geeksforgeeks.org/object-keys-javascript/)
 [javascript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
 
-fs; readFile and createReadStream
+fs; readFile and createReadStream:
 [fs.createReadstream](https://nodejs.org/docs/latest/api/fs.html#fs_fs_createreadstream_path_options)
 [async/await readable stream](https://2ality.com/2019/11/nodejs-streams-async-iteration.html)
 [fs.readfile](https://nodejs.org/docs/latest/api/fs.html#fs_fs_readfile_path_options_callback)
@@ -84,7 +85,7 @@ fs; readFile and createReadStream
 [streams](https://nodejs.dev/learn/nodejs-streams)
 [fs.readFile](https://medium.com/@osiolabs/read-write-json-files-with-node-js-92d03cc82824)
 
-Buffer
+Buffer:
 [Buffer Encoding](https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings)
 
 Big O Notation:
